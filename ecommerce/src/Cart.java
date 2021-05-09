@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-// this class contains an arrats & can y of producmanipulate them -> price(), addProduct, removeProduct, etc
 public class Cart {
     private String id;
     private String clientID;
@@ -13,6 +12,9 @@ public class Cart {
         //this.productList=null;
     }
     // add a product to the shopping cart
+    /**
+     * Replace the product Object with product id and query the rst from the database
+     * */
     public void addProduct(Product product){
         productList.add(product);
         this.price+= product.getPrice();
@@ -26,6 +28,10 @@ public class Cart {
             }
         }
     }
+    /**
+     * To Do pay methode when it's called it will reset the cart
+     * */
+
     // Getters
     public String getId() {
         return id;
