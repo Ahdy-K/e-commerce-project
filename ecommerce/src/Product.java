@@ -3,6 +3,7 @@ public class Product {
     private String name;
     private String description;
     private Double price;
+    // TODO: Change Img photo with photo id and then the user select a photo
     private Img photo;
     public Product(String id, String name, String description, Double price, Img photo){
         this.id = id;

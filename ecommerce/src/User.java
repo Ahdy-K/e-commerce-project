@@ -23,7 +23,8 @@ public class User{
         this.password=password;
         this.address=address;
         this.phone=phone;
-        this.cart = new Cart("1",this.userId);
+
+        this.cart = new Cart(this.userId,this.userId);
     }
     public boolean checkMailAddress(String email){
             String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
