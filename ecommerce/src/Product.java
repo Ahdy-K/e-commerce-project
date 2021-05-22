@@ -4,13 +4,13 @@ public class Product {
     private String description;
     private Double price;
     // TODO: Change Img photo with photo id and then the user select a photo
-    private Img photo;
-    public Product(String id, String name, String description, Double price, Img photo){
+    private String photoId;
+    public Product(String id, String name, String description, Double price, String photo){
         this.id = id;
         this.name = name;
         this.description= description;
         this.price = price;
-        this.photo = photo;
+        this.photoId = photo;
     }
     // Getters and Setters.
     public String getId() {
@@ -29,8 +29,8 @@ public class Product {
         return price;
     }
 
-    public Img getPhoto() {
-        return photo;
+    public String getPhoto() {
+        return photoId;
     }
 
     public void setId(String id) {
@@ -49,8 +49,8 @@ public class Product {
         this.price = price;
     }
 
-    public void setPhoto(Img photo) {
-        this.photo = photo;
+    public void setPhoto(String photo) {
+        this.photoId = photo;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class Product {
                 ", name='" + name + '\'' +"\n"+
                 ", description='" + description + '\'' +"\n"+
                 ", price=" + price +" Dinars"+"\n"+
-                ", photo=" + photo +"\n"+
+                ", photo=" + photoId +"\n"+
                 '}';
     }
 }
