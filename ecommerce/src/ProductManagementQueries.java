@@ -20,11 +20,13 @@ public class ProductManagementQueries extends DBConnector {
         productList = new ArrayList();
         try {
             res = statement.executeQuery();
-            while (res.next()) productList.add(new Product(res.getString(1),
+            while (res.next()) productList.add(new Product(
+                    res.getString(1),
                     res.getString(2),
                     res.getString(3),
                     res.getDouble(4),
-                    res.getString(5)));
+                    res.getString(5),
+                    res.getString(6)));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -43,7 +45,10 @@ public class ProductManagementQueries extends DBConnector {
         try {
             res = statement.executeQuery();
             while (res.next()){
-                product = new Product(res.getString(1),res.getString(2),res.getString(3),res.getDouble(4),res.getString(5));
+                product = new Product(
+                        res.getString(1),
+                        res.getString(2),res.getString(3),
+                        res.getDouble(4),res.getString(5),res.getString(6));
                 System.out.println(res);
             }
         } catch (SQLException e) {
@@ -56,12 +61,13 @@ public class ProductManagementQueries extends DBConnector {
     * Create/ ADD Product
     * */
     public static void addProduct(Product p) throws SQLException{
-       PreparedStatement statement = C.prepareStatement("INSERT INTO product VALUES(?,?,?,?,?)");
+       PreparedStatement statement = C.prepareStatement("INSERT INTO product VALUES(?,?,?,?,?,?)");
        statement.setString(1,p.getId());
        statement.setString(2,p.getName());
        statement.setString(3,p.getDescription());
        statement.setDouble(4,p.getPrice());
        statement.setString(5,p.getPhoto());
+        statement.setString(6,p.getSellerID());
        try {
            int res = statement.executeUpdate();
            System.out.println("Product Added");

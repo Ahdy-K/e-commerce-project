@@ -24,7 +24,7 @@ public class UserManagementQueries extends DBConnector{
                     res.getString(2),
                     res.getString(3),
                     res.getString(4),res.getString(5),
-                    res.getString(6)));
+                    res.getString(6), res.getBoolean(7)));
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -33,9 +33,10 @@ public class UserManagementQueries extends DBConnector{
     /*
     * This method will add a new user to the database
     * */
+    // addComment(Product p, String com)
     public static void addUser(User u) throws SQLException{
 
-        String req = "INSERT INTO user VALUES(?,?,?,?,?,?)";
+        String req = "INSERT INTO user VALUES(?,?,?,?,?,?,?)";
         PreparedStatement statement = C.prepareStatement(req);
         statement.setString(1,u.getUserId());
         statement.setString(2,u.getUsername());
@@ -43,7 +44,7 @@ public class UserManagementQueries extends DBConnector{
         statement.setString(4,u.getPassword());
         statement.setString(5,u.getAddress());
         statement.setString(6,u.getPhone());
-
+        statement.setBoolean(7,u.isSeller());
         System.out.println(statement);
                 try{
                     int res= statement.executeUpdate();
@@ -56,16 +57,16 @@ public class UserManagementQueries extends DBConnector{
     * Get User by ID
     * @Return type User
     * */
-    public static User getUserById(String id)throws SQLException{
+    public static User getUserByEmail(String email)throws SQLException{
         User user = null;
-        String req = "Select * from user where userId=?";
+        String req = "Select * from user where email=?";
         PreparedStatement statement=  C.prepareStatement(req);
-        statement.setString(1,id);
+        statement.setString(1,email);
         System.out.println(statement);
         try{
             res = statement.executeQuery();
             while (res.next())
-                user = new User(res.getString(1),res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getString(6));
+                user = new User(res.getString(1),res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getString(6), res.getBoolean(6));
             System.out.println(res);
 
         }catch (SQLException e){ e.printStackTrace();}
